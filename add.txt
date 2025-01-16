@@ -1,0 +1,26 @@
+adfsfif
+ication respec = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
+                .build();
+
+        // Define the RequestSpecification
+        RequestSpecification req = new RequestSpecBuilder()
+                .setBaseUri("https://rahulshettyacademy.com")
+                .addQueryParam("key", "qaclick123")
+                .setContentType(ContentType.JSON)
+                .build();
+
+        // Send the request and get the response
+        Response response = given()
+                .spec(req)
+                .when()
+                .post("/maps/api/place/add/json")
+                .then()
+                .spec(respec)
+                .extract()
+                .response();
+
+        // Convert response to String and print
+        String responseString = response.asString();
+        System.out.println(responseString);
